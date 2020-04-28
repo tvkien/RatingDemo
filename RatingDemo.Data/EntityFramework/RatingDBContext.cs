@@ -10,12 +10,18 @@ namespace RatingDemo.Data.EntityFramework
 {
     public class RatingDBContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
+        public DbSet<EventAuditDetail> EventAuditDetails { get; set; }
+        public DbSet<RatingInformation> RatingInformations { get; set; }
+
         public RatingDBContext(DbContextOptions options) : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new EventAuditDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingInformationConfiguration());
+            
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
 

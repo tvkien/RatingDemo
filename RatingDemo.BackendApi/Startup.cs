@@ -28,6 +28,8 @@ namespace RatingDemo.BackendApi
             services.AddSingleton(provider => Configuration.GetSection("TokensJWT").Get<TokensJWT>());
             
             services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<ILogger, Logger>();
+            services.AddTransient<IRatingService, RatingService>();
             
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
