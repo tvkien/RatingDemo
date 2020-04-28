@@ -5,3 +5,7 @@
     position: fixed;
     background-size: contain;
 }
+
+.logo-login {
+    width: 10%;
+}

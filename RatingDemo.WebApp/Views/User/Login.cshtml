@@ -1,0 +1,47 @@
+﻿@using RatingDemo.WebApp.Models
+@model LoginRequest
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-xl-6 offset-xl-3 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 border pl-5 pr-5 pt-5 pb-5 mb-5 bg-danger text-white">
+            <form asp-controller="User" asp-action="Login" method="post" autocomplete="off">
+                <div class="text-center">
+                    <img src="~/images/login/arrow-button.png" class="img-fluid logo-login" />
+                    <h1>Đăng Nhập</h1>
+                </div>
+
+                <div class="form-group mt-4 md-form">
+                    <label>Passcode</label>
+                    <input type="text"
+                           class="form-control"
+                           asp-for="Passcode"
+                           autocomplete="off" />
+                </div>
+                <div>
+                    <h4>Chọn loại dịch vụ</h4>
+
+                    <input type="hidden" asp-for="Service"/>
+
+                    <div class="row pl-0 pr-0 m-0 text-center mw-100">
+                        <div class="col-4  border  border-white">
+                            <img src="~/images/login/bucket.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span class="mb-3">Vệ sinh</span>
+                        </div>
+                        <div class="col-4  border  border-white">
+                            <img src="~/images/login/policeman.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span class="mb-3">Bảo vệ</span>
+                        </div>
+                        <div class="col-4  border  border-white">
+                            <img src="~/images/login/social-care.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span class="mb-3">Chăm sóc học viên</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-light border btn-lg w-100 mt-2">
+                    Bắt đầu đánh giá
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
