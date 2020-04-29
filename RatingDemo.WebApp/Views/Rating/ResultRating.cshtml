@@ -1,0 +1,51 @@
+﻿@using RatingDemo.WebApp.Models
+@model LoginRequest
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-xl-8 offset-xl-2 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 border pl-5 pr-5 pt-3 pb-4 mb-1 mt-3 bg-white text-white">
+            <div class="d-flex justify-content-center">
+                <img src="~/images/emoji/Asset.png" alt="Logo" class="col-lg-2 mx-auto w-50 d-block img-fluid rounded" />
+            </div>
+
+            <div class="d-flex justify-content-center text-center text-dark">
+                <h3>Cam on danh gia cua cac ban.</h3>
+            </div>
+
+            <div class="text-center text-dark">
+                <span>
+                    ALT IELTS Gia Su se no luc hon de dem den nhieu trai nghiem thu vi trong thoi gian toi.<br />
+                    Hay tiep tuc theo doi chung toi tai <a href="#"><b>ieltsgiasu.com</b></a>
+                </span>
+            </div>
+
+            <div class="mt-3 d-flex justify-content-center">
+                <a asp-controller="Rating"
+                   asp-action="Index"
+                   role="button"
+                   id="countdownbutton"
+                   class="btn btn-danger border btn-lg">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            var countDownDate = new Date().getSeconds() + 5;
+            $("#countdownbutton").text("Danh gia lai tu dau (5s)");
+            var countTimer = setInterval(function () {
+                var distance = countDownDate - new Date().getSeconds();
+                if (distance < 0) {
+                    clearInterval(countTimer);
+                    window.location.href = $('#countdownbutton').attr('href');
+                }
+                else {
+                    $("#countdownbutton").text("Danh gia lai tu dau (" + distance + "s)");
+                }
+            }, 1000);
+        });
+    </script>
+}

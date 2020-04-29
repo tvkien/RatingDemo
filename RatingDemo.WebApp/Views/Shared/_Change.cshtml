@@ -1,0 +1,91 @@
+﻿@using RatingDemo.WebApp.Models
+@model LoginRequest
+
+<div class="col-2 py-5">
+    <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>Tuy chon</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a href="#"
+               role="button"
+               class="dropdown-item btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                Doi dich vu
+            </a>
+            <a href="#"
+               role="button"
+               class="dropdown-item btn-danger" data-toggle="modal" data-target="#modalExit">
+                Thoat
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form asp-controller="User" asp-action="Login" method="post" autocomplete="off" class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Vui long chon dich vu can doi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="password"
+                               class="form-control"
+                               asp-for="Passcode"
+                               autocomplete="off" placeholder="Passcode"/>
+
+                        <input type="text" asp-for="Service" hidden="hidden" />
+                    </div>
+
+                    <div class="row mt-3 pl-0 pr-0 m-0 text-center mw-100">
+                        <div id="cleaning" class="col-4 border border-danger btn bg-secondary" onclick="ChooseType('cleaning');" disable>
+                            <img src="~/images/login/bucket.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span id="cleaningText" class="mb-3">Vệ sinh</span>
+                        </div>
+                        <div id="security" class="col-4 border border-danger btn" onclick="ChooseType('security');">
+                            <img src="~/images/login/policeman.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span id="securityText" class="mb-3">Bảo vệ</span>
+                        </div>
+                        <div id="student" class="col-4 border border-danger btn" onclick="ChooseType('student');">
+                            <img src="~/images/login/social-care.png" alt="Logo" class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
+                            <span id="studentText" class="mb-3">Chăm sóc học viên</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-danger">DOI DICH VU</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalExit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form asp-controller="User" asp-action="Logout" method="post" autocomplete="off" class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Vui long nhap postcode</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="password"
+                               class="form-control"
+                               asp-for="Passcode"
+                               autocomplete="off" placeholder="Passcode"/>
+                    </div>
+                    <div class="text-center justify-content-center">
+                        <button type="submit" class="btn btn-danger justify-content-center">Dang xuat</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

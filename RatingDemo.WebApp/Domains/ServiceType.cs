@@ -1,6 +1,6 @@
 ﻿namespace RatingDemo.WebApp.Domains
 {
-    public enum Services
+    public enum ServiceType
     {
         None,
         Clean,

@@ -1,4 +1,4 @@
-﻿namespace RatingDemo.WebApp
+﻿namespace RatingDemo.WebApp.Businesses
 {
     public static class HttpClientName
     {

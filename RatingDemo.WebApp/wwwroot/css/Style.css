@@ -9,3 +9,21 @@
 .logo-login {
     width: 10%;
 }
+
+.rating-image img {
+    width: 7%;
+    padding: 2px;
+    cursor:pointer;
+}
+
+.fa-star-rating {
+    background-image: url('../images/star.svg');
+}
+
+.emoji img {
+    width: 7%;
+}
+
+.services .service-select {
+    cursor: pointer;
+}
