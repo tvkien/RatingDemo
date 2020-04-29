@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RatingDemo.BackendApi.Businesses;
 using RatingDemo.Data.Entities;
 using RatingDemo.Data.EntityFramework;
 
@@ -55,6 +56,8 @@ namespace RatingDemo.BackendApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<SerilogMiddleware>();
 
             app.UseHttpsRedirection();
 

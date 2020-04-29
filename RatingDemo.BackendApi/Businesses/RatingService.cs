@@ -4,7 +4,7 @@ using RatingDemo.Data.EntityFramework;
 using System;
 using System.Threading.Tasks;
 
-namespace RatingDemo.BackendApi
+namespace RatingDemo.BackendApi.Businesses
 {
     public class RatingService : IRatingService
     {

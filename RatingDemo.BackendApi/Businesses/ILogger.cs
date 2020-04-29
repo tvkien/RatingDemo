@@ -1,7 +1,7 @@
 ﻿using RatingDemo.Data.Entities;
 using System.Threading.Tasks;
 
-namespace RatingDemo.BackendApi
+namespace RatingDemo.BackendApi.Businesses
 {
     public interface ILogger
     {

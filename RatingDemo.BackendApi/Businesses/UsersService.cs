@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RatingDemo.BackendApi
+namespace RatingDemo.BackendApi.Businesses
 {
     public class UsersService : IUsersService
     {
