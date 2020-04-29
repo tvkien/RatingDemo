@@ -7,8 +7,8 @@
 }
 
 <div class="text-center">
-    <h3 class="glyphicon-bold">DANH GIA CHAT LUONG DICH VU</h3>
-    <span>Ban dang danh gia chi nhanh Phan Chu Trinh</span>
+    <h3 class="glyphicon-bold">ĐÁNH GIÁ CHẤT LƯỢNG DỊCH VỤ</h3>
+    <span>Bạn đang đánh giá chi nhánh Phan Chu Trinh</span>
 </div>
 
 <div class="container-fluid">
@@ -17,20 +17,7 @@
             <form asp-controller="Rating" asp-action="Index" method="post" autocomplete="off">
                 <input type="hidden" asp-for="ServiceType" value="@ViewBag.ServiceType" />
                 <div class="text-center">
-                    @if (ViewBag.ServiceType == ServiceType.Clean)
-                    {
-                        <h5 class="text-dark">Ban thay lop hoc, van phong ALT IELTS Gia su co <span class="text-danger">sach se</span> khong?</h5>
-                    }
-
-                    @if (ViewBag.ServiceType == ServiceType.Security)
-                    {
-                        <h5 class="text-dark">Ban co hai long voi dich vu <span class="text-danger">Bao Ve</span> cua ALT IELTS Gia su khong?</h5>
-                    }
-
-                    @if (ViewBag.ServiceType == ServiceType.CareOfStudent)
-                    {
-                        <h5 class="text-dark">Ban co hai long voi dich vu <span class="text-danger">Cham Soc Hoc Vien</span> cua ALT IELTS Gia su khong?</h5>
-                    }
+                    <h5 class="text-dark">Bạn thấy lớp học, văn phòng ALT IELTS Gia sư có <span class="text-danger">sạch sẽ</span> không?</h5>
                 </div>
 
                 <div class="col text-center emoji">
@@ -57,12 +44,12 @@
                 <textarea class="form-control"
                           rows="4"
                           asp-for="Description"
-                          placeholder="Xin cho biet gop y cua ban de chung toi cai thien dich vu tot hon.">
+                          placeholder="Xin cho biết góp ý của bạn để chúng tôi cải thiện tốt hơn.">
                 </textarea>
 
                 <div class="col text-center mt-3">
                     <button type="submit" class="btn btn-danger border btn-lg w-25 mt-2 justify-content-center">
-                        Gui
+                        Gửi
                     </button>
                 </div>
             </form>

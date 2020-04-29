@@ -4,18 +4,18 @@
 <div class="col-2 py-5">
     <div class="dropdown">
         <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <b>Tuy chon</b>
+            <b>Tùy chọn</b>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a href="#"
                role="button"
                class="dropdown-item btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                Doi dich vu
+                Đổi dịch vụ
             </a>
             <a href="#"
                role="button"
                class="dropdown-item btn-danger" data-toggle="modal" data-target="#modalExit">
-                Thoat
+                Thoát
             </a>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <form asp-controller="User" asp-action="Login" method="post" autocomplete="off" class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Vui long chon dich vu can doi</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Vui lòng chọn dịch vụ cần đổi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="submit" class="btn btn-danger">DOI DICH VU</button>
+                    <button type="submit" class="btn btn-danger">ĐỔI DỊCH VỤ</button>
                 </div>
             </div>
         </form>
@@ -69,7 +69,7 @@
         <form asp-controller="User" asp-action="Logout" method="post" autocomplete="off" class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Vui long nhap postcode</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Vui lòng nhập postcode</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,7 +82,7 @@
                                autocomplete="off" placeholder="Passcode"/>
                     </div>
                     <div class="text-center justify-content-center">
-                        <button type="submit" class="btn btn-danger justify-content-center">Dang xuat</button>
+                        <button type="submit" class="btn btn-danger justify-content-center">Đăng xuất</button>
                     </div>
                 </div>
             </div>

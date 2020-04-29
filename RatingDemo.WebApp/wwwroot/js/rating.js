@@ -32,11 +32,11 @@
 
     var SetEmojiMessage = function (rating) {
         switch (rating) {
-            case 1: return "Rat khong sach se";
-            case 2: return "Cung tam chap nhan";
-            case 3: return "Chap nhan duoc";
-            case 4: return "Kha Chap nhan duoc";
-            case 5: return "Rat sach se";
+            case 1: return "Rất không sạch sẽ";
+            case 2: return "Cũng tạm chấp nhận";
+            case 3: return "Chấp nhận được";
+            case 4: return "Khá chấp nhận được";
+            case 5: return "Rất sạch sẽ";
             default: return "";
         };
     };

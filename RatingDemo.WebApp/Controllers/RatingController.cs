@@ -25,11 +25,6 @@ namespace RatingDemo.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(RatingInfoRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
             await ratingHandlers.SaveRating(request);
 
             return RedirectToAction("ResultRating", "Rating");

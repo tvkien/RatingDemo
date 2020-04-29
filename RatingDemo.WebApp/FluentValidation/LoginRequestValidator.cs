@@ -11,14 +11,6 @@ namespace RatingDemo.WebApp.FluentValidation
             RuleFor(x => x.Passcode)
                 .NotEmpty().WithMessage("Passcode is required")
                 .MinimumLength(4).WithMessage("Passcode is at least 4 characters");
-
-            RuleFor(x => x.Service).Custom((type, context) =>
-            {
-                if (type == ServiceType.None)
-                {
-                    context.AddFailure("Please choose the service type.");
-                }
-            });
         }
     }
 }
