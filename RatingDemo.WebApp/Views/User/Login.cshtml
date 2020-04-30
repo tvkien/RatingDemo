@@ -19,15 +19,14 @@
                 </div>
                 <div>
                     <h4>Chọn loại dịch vụ</h4>
-                    <input type="hidden" asp-for="Service" />
-                    <span asp-validation-for="Service"></span>
+                    <input type="hidden" asp-for="Service" value="1"/>
 
                     <div class="row pl-0 pr-0 m-0 text-center mw-100 services">
-                        <div class="col-4 border border-white service-select" data-selector="1">
+                        <div class="col-4 border border-white  bg-white service-select" data-selector="1">
                             <img src="~/images/login/bucket.png"
                                  alt="Logo"
                                  class="mt-4 mb-3 mx-auto d-block w-25 img-fluid rounded" />
-                            <span class="mb-3">Vệ sinh</span>
+                            <span class="mb-3 text-dark">Vệ sinh</span>
                         </div>
                         <div class="col-4  border border-white service-select" data-selector="2">
                             <img src="~/images/login/policeman.png"

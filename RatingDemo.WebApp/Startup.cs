@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using RatingDemo.WebApp.Businesses;
+using RatingDemo.WebApp.Domains;
 using RatingDemo.WebApp.FluentValidation;
 using System;
 using System.IdentityModel.Tokens.Jwt;

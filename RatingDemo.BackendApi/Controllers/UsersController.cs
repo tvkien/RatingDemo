@@ -26,10 +26,18 @@ namespace RatingDemo.BackendApi.Controllers
 
             if (string.IsNullOrEmpty(resultToken))
             {
-                return BadRequest("Passcode is incorrect.");
+                return BadRequest(new AuthenticateResponse
+                {
+                    IsSucceed = false,
+                    ErrorMessage = "Passcode is incorrect. Please try again."
+                });
             }
 
-            return Ok(resultToken);
+            return Ok(new AuthenticateResponse
+            {
+                IsSucceed = true,
+                Tokens = resultToken
+            });
         }
     }
 }

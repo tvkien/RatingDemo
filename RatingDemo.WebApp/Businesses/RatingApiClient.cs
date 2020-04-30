@@ -1,4 +1,5 @@
-﻿using RatingDemo.WebApp.Models;
+﻿using RatingDemo.WebApp.Domains;
+using RatingDemo.WebApp.Models;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -11,12 +12,12 @@ namespace RatingDemo.WebApp.Businesses
         public RatingApiClient(IHttpClientFactory httpClientFactory)
             => this.httpClientFactory = httpClientFactory;
 
-        public async Task<string> AuthenticateAsync(LoginRequest request)
+        public async Task<AuthenticateResponse> AuthenticateAsync(LoginRequest request)
         {
             var client = httpClientFactory.CreateClient(HttpClientName.BackendApi);
             var result = await client.PostAsJsonAsync("api/users/authenticate", request);
 
-            return await result.Content.ReadAsStringAsync();
+            return await result.Content.ReadAsAsync<AuthenticateResponse>();
         }
 
         public async Task SaveRatingAsync(RatingInfoRequest request)

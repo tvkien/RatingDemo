@@ -1,4 +1,4 @@
-﻿namespace RatingDemo.WebApp
+﻿namespace RatingDemo.WebApp.Domains
 {
     public class TokensJWT
     {

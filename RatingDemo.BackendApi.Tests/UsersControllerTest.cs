@@ -31,27 +31,29 @@ namespace RatingDemo.BackendApi.Tests
 
             //Action
             var response = await usersController.AuthenticateAsync(It.IsAny<LoginRequest>()) as OkObjectResult;
-            var result = response.Value as string;
+            var result = response.Value as AuthenticateResponse;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result, tokens);
+            Assert.IsTrue(result.IsSucceed);
+            Assert.AreEqual(result.Tokens, tokens);
         }
 
         [Test]
         public async Task ShouldReturnThePasscodeIncorrect()
         {
             //Arrange
-            const string message = "Passcode is incorrect.";
+            const string message = "Passcode is incorrect. Please try again.";
             usersService.Setup(x => x.AuthenticateAsync(It.IsAny<LoginRequest>())).Returns(Task.FromResult(string.Empty));
 
             //Action
             var response = await usersController.AuthenticateAsync(It.IsAny<LoginRequest>()) as BadRequestObjectResult;
-            var result = response.Value as string;
+            var result = response.Value as AuthenticateResponse;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result, message);
+            Assert.IsFalse(result.IsSucceed);
+            Assert.AreEqual(result.ErrorMessage, message);
         }
 
         [Test]

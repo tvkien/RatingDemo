@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using RatingDemo.WebApp.Domains;
 using RatingDemo.WebApp.Models;
 using System.Security.Claims;
 using System.Text;
@@ -23,7 +24,7 @@ namespace RatingDemo.WebApp.Businesses
             this.securityTokenValidator = securityTokenValidator;
         }
 
-        public async Task<string> Authenticate(LoginRequest request)
+        public async Task<AuthenticateResponse> Authenticate(LoginRequest request)
             => await userApiClient.AuthenticateAsync(request);
 
         public ClaimsPrincipal ValidateToken(string jwtToken)

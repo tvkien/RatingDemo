@@ -32,8 +32,15 @@ namespace RatingDemo.WebApp.Controllers
                 return View();
             }
 
-            var token = await userHandler.Authenticate(request);
-            var claimsPrincipal = userHandler.ValidateToken(token);
+            var authenticateResponse = await userHandler.Authenticate(request);
+
+            if (!authenticateResponse.IsSucceed)
+            {
+                ModelState.AddModelError(nameof(request.Passcode), authenticateResponse.ErrorMessage);
+                return View();
+            }
+
+            var claimsPrincipal = userHandler.ValidateToken(authenticateResponse.Tokens);
             var authProperties = new AuthenticationProperties
             {
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
