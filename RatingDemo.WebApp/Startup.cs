@@ -36,6 +36,8 @@ namespace RatingDemo.WebApp
             services.AddTransient<IUserHandlers, UserHandlers>();
             services.AddTransient<IRatingHandlers, RatingHandlers>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -48,6 +50,8 @@ namespace RatingDemo.WebApp
             services.AddControllersWithViews()
                     .AddFluentValidation(
                         fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
+            services.AddDistributedMemoryCache();
+            services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(30));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,7 +71,7 @@ namespace RatingDemo.WebApp
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

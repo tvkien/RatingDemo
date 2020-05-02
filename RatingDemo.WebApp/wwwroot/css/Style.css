@@ -2,8 +2,8 @@
     width: 100%;
     background-image: url('../images/group-people-wave.svg');
     background-repeat: no-repeat;
-    position: fixed;
     background-size: contain;
+    background-position:center;
 }
 
 .logo-login {
@@ -24,6 +24,63 @@
     width: 7%;
 }
 
-.services .service-select {
+.services {
     cursor: pointer;
+    transition: transform 1s;
+}
+    .services img {
+        width: 35%;
+    }
+    .services:hover {
+        transform: scale(1,1);
+        background-color: white;
+        color: #dc3545;
+    }
+
+.change-service {
+    cursor: pointer;
+    transition: transform 1s;
+}
+    .change-service img {
+        width: 35%;
+    }
+
+    .change-service:hover {
+        transform: scale(1,1);
+        background-color: #6c757d;
+        color: #dc3545;
+    }
+
+.btn-start {
+    border-radius: 40px;
+    width: 200px;
+}
+
+.bg-color {
+    background-color: #dc3545 !important;
+}
+
+.border-radius {
+    border-radius: 40px;
+}
+
+.btn-rating {
+    width:150px;
+}
+
+#countdownbutton {
+    width: 290px;
+    font-size:medium;
+}
+
+@media (max-width: 576px) {
+    .img-logo {
+        width: 100% !important;
+    }
+    .rating-image img{
+        width:15%;
+    }
+    .emoji img {
+        width: 15%;
+    }
 }

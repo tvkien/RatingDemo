@@ -11,13 +11,35 @@
 <body>
     <header role="banner">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-10 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 py-5">
-                    <img src="~/images/logo.png" alt="Logo" class="mx-auto d-block w-25 img-fluid" />
+            <div class="row  py-5">
+                <div class="col-4 offset-4 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-6 offset-xl-3">
+                    <img src="~/images/logo.png" alt="Logo" class="mx-auto d-block w-25 img-fluid img-logo" />
                 </div>
+
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <partial name="_Selection" />
+                    <div class="col-4 col-sm-2 col-md-2 col-lg-2 offset-lg-2 col-xl-2 offset-xl-1">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <b>Tùy chọn</b>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="#"
+                                   role="button"
+                                   class="dropdown-item btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Đổi dịch vụ
+                                </a>
+                                <a href="#"
+                                   role="button"
+                                   class="dropdown-item btn-danger" data-toggle="modal" data-target="#modalExit">
+                                    Thoát
+                                </a>
+                            </div>
+
+                            <partial name="_ChangeServiceModal" />
+                            <partial name="_ExitModal" />
+                        </div>
+                    </div>
                 }
             </div>
         </div>
@@ -28,9 +50,9 @@
     </main>
 
     <div class="d-none">
-        <script src="~/js/popper.min.js"></script>
+        @*<script src="~/js/popper.min.js"></script>*@
         <script src="~/jquery/3.5.0/jquery.min.js"></script>
-        <script src="~/bootstrap/4.4.1/dist/js/bootstrap.min.js"></script>
+        @*<script src="~/bootstrap/4.4.1/dist/js/bootstrap.min.js"></script>*@
     </div>
 
     @RenderSection("Scripts", required: false)

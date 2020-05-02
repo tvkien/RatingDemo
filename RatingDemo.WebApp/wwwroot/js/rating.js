@@ -43,6 +43,7 @@
 
     $star_rating.on('click', function () {
         $star_rating.siblings('#Scored').val($(this).data('rating'));
+        $('span.field-validation-error').remove();
         return SetRatingStar();
     });
 })(jQuery);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RatingDemo.WebApp.Businesses;
 using RatingDemo.WebApp.Models;
@@ -46,13 +47,14 @@ namespace RatingDemo.WebApp.Controllers
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
                 IsPersistent = false
             };
+            HttpContext.Session.SetServiceType(request.Service);
 
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         claimsPrincipal,
                         authProperties);
 
-            return RedirectToAction("Index", "Rating", new { ServiceType = request.Service});
+            return RedirectToAction("Index", "Rating", new { ServiceType = request.Service });
         }
 
         [HttpGet]
@@ -64,8 +66,47 @@ namespace RatingDemo.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout(LoginRequest request)
         {
+            ClearModelError(nameof(request.Service));
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_ExitModal", request);
+            }
+
+            if (request.Passcode != HttpContext.User.GetPasscode())
+            {
+                ModelState.AddModelError(nameof(request.Passcode), "Nhập sai passcode. Vui lòng nhập lại.");
+                return PartialView("_ExitModal", request);
+            }
+
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return Json(new { redirectToUrl = Url.Action("Index", "Home") });
+        }
+
+        [HttpPost]
+        public IActionResult ChangeService(LoginRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_ChangeServiceModal", request);
+            }
+
+            if (request.Passcode != HttpContext.User.GetPasscode())
+            {
+                ModelState.AddModelError(nameof(request.Passcode), "Nhập sai passcode. Vui lòng nhập lại.");
+                return PartialView("_ChangeServiceModal", request);
+            }
+
+            HttpContext.Session.SetServiceType(request.Service);
+
+            return Json(new { redirectToUrl = Url.Action("Index", "Rating") });
+        }
+
+        private void ClearModelError(string key)
+        {
+            if (ModelState.ContainsKey(key))
+            {
+                ModelState[key].Errors.Clear();
+            }
         }
     }
 }

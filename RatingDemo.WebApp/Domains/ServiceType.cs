@@ -2,7 +2,8 @@
 {
     public enum ServiceType
     {
-        Clean = 1,
+        None,
+        Clean,
         Security,
         CareOfStudent
     }

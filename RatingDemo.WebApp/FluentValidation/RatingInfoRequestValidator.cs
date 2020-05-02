@@ -7,7 +7,7 @@ namespace RatingDemo.BackendApi.FluentValidation
     {
         public RatingInfoRequestValidator()
         {
-            RuleFor(x => x.Scored).GreaterThan(0).WithMessage("Sored is required");
+            RuleFor(x => x.Scored).GreaterThan(0).WithMessage("Vui lòng lựa chọn xếp hạng.");
         }
     }
 }

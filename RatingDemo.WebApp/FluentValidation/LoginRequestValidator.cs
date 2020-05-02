@@ -9,8 +9,8 @@ namespace RatingDemo.WebApp.FluentValidation
         public LoginRequestValidator()
         {
             RuleFor(x => x.Passcode)
-                .NotEmpty().WithMessage("Passcode is required")
-                .MinimumLength(4).WithMessage("Passcode is at least 4 characters");
+                .NotEmpty().WithMessage("Vui lòng nhập thông tin Passcode.")
+                .MinimumLength(4).WithMessage("Passcode ít nhất phải có 4 ký tự.");
         }
     }
 }

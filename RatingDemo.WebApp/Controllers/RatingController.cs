@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RatingDemo.WebApp.Businesses;
-using RatingDemo.WebApp.Domains;
 using RatingDemo.WebApp.Models;
 using System.Threading.Tasks;
 
 namespace RatingDemo.WebApp.Controllers
 {
+    [Authorize]
     public class RatingController : Controller
     {
         private readonly IRatingHandlers ratingHandlers;
@@ -16,15 +17,20 @@ namespace RatingDemo.WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(ServiceType ServiceType)
+        public IActionResult Index()
         {
-            ViewBag.ServiceType = ServiceType;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(RatingInfoRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            request.Passcode = HttpContext.User.GetPasscode();
             await ratingHandlers.SaveRating(request);
 
             return RedirectToAction("ResultRating", "Rating");

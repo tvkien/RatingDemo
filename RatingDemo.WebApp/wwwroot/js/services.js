@@ -1,16 +1,14 @@
 ﻿(function ($) {
     "use strict";
 
-    var $service_rating = $('.services .service-select');
+    var $service_rating = $('.services');
 
     var SetServiceRaise = function () {
         return $service_rating.each(function () {
             if (parseInt($('#Service').val()) === parseInt($(this).data('selector'))) {
-                $(this).find("span").addClass('text-danger');
-                return $(this).addClass('bg-white');
+                return $(this).addClass('bg-white text-danger');
             } else {
-                $(this).find("span").removeClass('text-danger');
-                return $(this).removeClass('bg-white');
+                return $(this).removeClass('bg-white text-danger');
             }
         });
     };

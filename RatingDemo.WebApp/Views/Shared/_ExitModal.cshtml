@@ -1,0 +1,37 @@
+﻿@using RatingDemo.WebApp.Models
+@model LoginRequest
+
+<div id="modelExitPopup">
+    <div class="modal fade" id="modalExit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form asp-controller="User" asp-action="Logout" method="post" autocomplete="off" class="modal-content">
+                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Vui lòng nhập postcode</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="password"
+                                   class="form-control"
+                                   asp-for="Passcode"
+                                   autocomplete="off" placeholder="Passcode" />
+                            <span asp-validation-for="Passcode" class="text-danger"></span>
+                        </div>
+                        <div class="text-center justify-content-center">
+                            <button type="submit" id="ExitSubmit" class="btn btn-danger justify-content-center">Đăng xuất</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+     <div class="d-none">
+        <script src="~/js/exit.js"></script>
+    </div>
+</div>

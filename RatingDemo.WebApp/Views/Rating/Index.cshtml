@@ -1,10 +1,17 @@
-﻿@using RatingDemo.WebApp.Models
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using RatingDemo.WebApp.Businesses
 @using RatingDemo.WebApp.Domains
+@using RatingDemo.WebApp.Models
 @model RatingInfoRequest
 
 @{
     ViewData["Title"] = "Rating";
 }
+
+@{
+    var serviceType = HttpContextAccessor.HttpContext.Session.GetServiceType();
+}
+
 
 <div class="text-center">
     <h3 class="glyphicon-bold">ĐÁNH GIÁ CHẤT LƯỢNG DỊCH VỤ</h3>
@@ -13,11 +20,24 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-xl-8 offset-xl-2 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 border pl-5 pr-5 pt-3 pb-4 mb-1 mt-3 bg-white text-white">
+        <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-4 offset-lg-4 col-xl-8 offset-xl-2  border pl-5 pr-5 pt-3 pb-4 mb-1 mt-3 bg-white text-white shadow-lg">
             <form asp-controller="Rating" asp-action="Index" method="post" autocomplete="off">
-                <input type="hidden" asp-for="ServiceType" value="@ViewBag.ServiceType" />
+                <input type="hidden" asp-for="ServiceType" value="@serviceType" />
                 <div class="text-center">
-                    <h5 class="text-dark">Bạn thấy lớp học, văn phòng ALT IELTS Gia sư có <span class="text-danger">sạch sẽ</span> không?</h5>
+                    @if (serviceType == ServiceType.Clean)
+                    {
+                        <h5 class="text-dark">Bạn thấy lớp học, văn phòng ALT IELTS Gia sư có<span class="text-danger">Sạch Sẽ</span> không?</h5>
+                    }
+
+                    @if (serviceType == ServiceType.Security)
+                    {
+                        <h5 class="text-dark">Bạn có hài lòng với dịch vụ <span class="text-danger">Bảo Vệ</span> của văn phòng ALT IELTS Gia sư không?</h5>
+                    }
+
+                    @if (serviceType == ServiceType.CareOfStudent)
+                    {
+                        <h5 class="text-dark">Bạn có hài lòng với sự <span class="text-danger">Chăm Sóc Học Viên</span> của ALT IELTS Gia sư không?</h5>
+                    }
                 </div>
 
                 <div class="col text-center emoji">
@@ -40,6 +60,9 @@
                     <img src="~/images/star-not-rating.png" data-rating="5" alt="Responsive image" class="img-fluid" />
                     <input type="hidden" asp-for="Scored" value="0" />
                 </div>
+                <div>
+                    <span asp-validation-for="Scored" class="text-danger d-block text-center"></span>
+                </div>
 
                 <textarea class="form-control"
                           rows="4"
@@ -48,7 +71,7 @@
                 </textarea>
 
                 <div class="col text-center mt-3">
-                    <button type="submit" class="btn btn-danger border btn-lg w-25 mt-2 justify-content-center">
+                    <button type="submit" class="btn btn-danger btn-rating border-radius btn-lg mt-2 justify-content-center">
                         Gửi
                     </button>
                 </div>
