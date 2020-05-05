@@ -10,7 +10,7 @@
 
 <div id="modal-placeholder">
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <form asp-controller="User" asp-action="ChangeService" method="post" autocomplete="off" class="modal-content">
                 <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                 <div class="modal-content">
@@ -33,24 +33,30 @@
                         <h4>Chọn dịch vụ cần đổi</h4>
                         <input type="text" asp-for="Service" hidden="hidden" value="@serviceType" />
 
-                        <div class="row mt-3 pl-0 pr-0 m-0 text-center mw-100">
-                            <div class="col-4 rounded-lg border border-danger change-service @(serviceType == ServiceType.Clean ? "bg-secondary text-danger" : "")" data-selector="1">
-                                <img src="~/images/login/bucket.png"
-                                     alt="Logo"
-                                     class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
-                                <span class="mb-3">Vệ sinh</span>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="pb-3 text-center rounded-lg border border-danger change-service @(serviceType == ServiceType.Clean ? "bg-secondary text-danger" : "")" data-selector="1">
+                                    <img src="~/images/login/bucket.png"
+                                         alt="Logo"
+                                         class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
+                                    <span>Vệ sinh</span>
+                                </div>
                             </div>
-                            <div class="col-4 rounded-lg border border-danger change-service @(serviceType == ServiceType.Security ? "bg-secondary text-danger" : "")" data-selector="2">
-                                <img src="~/images/login/policeman.png"
-                                     alt="Logo"
-                                     class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
-                                <span class="mb-3">Bảo vệ</span>
+                            <div class="col-4">
+                                <div class="pb-3 text-center rounded-lg border border-danger change-service @(serviceType == ServiceType.Security ? "bg-secondary text-danger" : "")" data-selector="2">
+                                    <img src="~/images/login/policeman.png"
+                                         alt="Logo"
+                                         class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
+                                    <span>Bảo vệ</span>
+                                </div>
                             </div>
-                            <div class="col-4 rounded-lg border border-danger change-service @(serviceType == ServiceType.CareOfStudent ? "bg-secondary text-danger" : "")" data-selector="3">
-                                <img src="~/images/login/social-care.png"
-                                     alt="Logo"
-                                     class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
-                                <span class="mb-3">Chăm sóc học viên</span>
+                            <div class="col-4">
+                                <div class="pb-3 text-center rounded-lg border border-danger change-service @(serviceType == ServiceType.CareOfStudent ? "bg-secondary text-danger" : "")" data-selector="3">
+                                    <img src="~/images/login/social-care.png"
+                                         alt="Logo"
+                                         class="mt-4 mb-3 mx-auto d-block w-25 img-fluid" />
+                                    <span>Chăm sóc học viên</span>
+                                </div>
                             </div>
                         </div>
                     </div>
